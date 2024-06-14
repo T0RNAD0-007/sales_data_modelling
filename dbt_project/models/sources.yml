@@ -13,3 +13,23 @@ sources:
 
       - name: cleansed_sales
         identifiers: cleansed_sales
+
+  - name: DEV_DIM
+    tables:
+      - name: dim_currency
+        identifier: dim_currency
+
+      - name: dim_dates
+        identifier: dim_dates
+
+      - name: dim_locations
+        identifier: dim_locations
+
+      - name: dim_orders
+        identifier: dim_orders
+
+      - name: dim_products
+        identifier: dim_products
+
+      - name: dim_shipments
+        identifier: dim_shipments
