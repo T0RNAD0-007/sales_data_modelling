@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: DEV_RAW
+    tables:
+      - name: sales
+        identifiers: sales
+
+  - name: DEV_STAGE
+    tables:
+      - name: state_lookup
+        identifier: state_lookup
+
+      - name: cleansed_sales
+        identifiers: cleansed_sales
