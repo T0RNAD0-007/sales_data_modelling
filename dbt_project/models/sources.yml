@@ -8,9 +8,6 @@ sources:
 
   - name: DEV_STAGE
     tables:
-      - name: state_lookup
-        identifier: state_lookup
-
       - name: cleansed_sales
         identifiers: cleansed_sales
 
@@ -33,3 +30,24 @@ sources:
 
       - name: dim_shipments
         identifier: dim_shipments
+
+      - name: dim_city_optimizer
+        identifier: dim_city_optimizer
+
+  - name: DEV_FACT
+    tables:
+      - name: fact_sales
+        identifier: fact_sales
+
+  - name: DEV_MART
+    tables:
+      - name: sales_per_state
+        identifier: sales_per_state
+
+  - name: DEV_STATIC
+    tables:
+      - name: state_lookup
+        identifier: state_lookup
+
+      - name: city_names
+        identifier: city_names
