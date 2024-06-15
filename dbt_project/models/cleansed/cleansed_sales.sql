@@ -34,7 +34,8 @@ dedup_records as ( SELECT distinct
         CASE WHEN upper(rsa.state) is not null THEN upper(TRIM(rsa.state)) else upper(split_part(TRIM(rs.ship_state),'/',0)) end as ship_state,
         TRY_TO_NUMBER(TRIM(ship_postal_code),6,0) as ship_postal_code,
         upper(TRIM(ship_country)) as ship_country,
-        promotion_ids,
+        promotion_ids as promotional_code,
+        CASE WHEN TRIM(promotion_ids) is not null THEN TRY_TO_BOOLEAN(TRUE) else TRY_TO_BOOLEAN(FALSE) END as promotion_applied,
         TRY_TO_BOOLEAN(b2b) as b2b,
         fulfilled_by as order_fulfilled_by
     from raw_sales rs left join raw_state_abbrevation rsa on TRIM(rs.ship_state) = TRIM(rsa.abbrevation)

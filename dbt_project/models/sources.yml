@@ -31,6 +31,9 @@ sources:
       - name: dim_shipments
         identifier: dim_shipments
 
+      - name: dim_coupons
+        identifier: dim_coupons
+
       - name: dim_city_optimizer
         identifier: dim_city_optimizer
 

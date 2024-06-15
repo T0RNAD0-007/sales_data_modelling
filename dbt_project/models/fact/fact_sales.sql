@@ -11,12 +11,14 @@ SELECT
     sales_transaction_id,
     sales_amount,
     sales_quantity,
+    promotion_applied as sales_promotion_applied,
     currency as sales_currency,
     dd.date_id as date_id,
     dl.location_id as location_id,
     do.order_id as order_id,
     dp.product_id as product_id,
-    ds.shipment_id as shipment_id
+    ds.shipment_id as shipment_id,
+    dc.promotional_id as promotional_id
 FROM cleansed_sales as cs
 JOIN {{source('DEV_DIM', 'dim_dates')}} dd on cs.date = dd.date
 JOIN {{source('DEV_DIM', 'dim_locations')}} as dl on COALESCE(cs.ship_city,'1') = COALESCE(dl.city,'1')
@@ -31,3 +33,4 @@ JOIN {{source('DEV_DIM', 'dim_products')}} as dp on COALESCE(cs.product_sku,'1')
 JOIN {{source('DEV_DIM', 'dim_shipments')}} as ds on COALESCE(cs.fulfilment,'1') = COALESCE(ds.fulfilment,'1')
     AND COALESCE(cs.ship_service_level,'1') = COALESCE(ds.ship_service_level,'1')
     AND COALESCE(cs.sales_channel,'1') = COALESCE(ds.sales_channel,'1') AND COALESCE(cs.courier_status,'1') = COALESCE(ds.courier_status,'1')
+JOIN {{source('DEV_DIM', 'dim_coupons')}} as dc on COALESCE(cs.promotional_code,'1') = COALESCE(dc.promotional_code,'1')
