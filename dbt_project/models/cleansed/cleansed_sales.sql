@@ -38,6 +38,7 @@ dedup_records as ( SELECT distinct
         CASE WHEN TRIM(promotion_ids) is not null THEN TRY_TO_BOOLEAN(TRUE) else TRY_TO_BOOLEAN(FALSE) END as promotion_applied,
         TRY_TO_BOOLEAN(b2b) as b2b,
         fulfilled_by as order_fulfilled_by
+        --case when sales_amount <> 0 and sales_quantity <> 0 and promotion_applied = FALSE then round(sales_amount/sales_quantity,2) else null end as unit_price
     from raw_sales rs left join raw_state_abbrevation rsa on TRIM(rs.ship_state) = TRIM(rsa.abbrevation)
 )
 select row_number() over (order by 1) as sales_transaction_id, * from dedup_records

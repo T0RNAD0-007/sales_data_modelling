@@ -14,5 +14,5 @@ SELECT
     year(date) as year,
     quarter(date) as quater,
     dayname(date) as day_of_week,
-    CASE WHEN upper(dayname(date)) in ('SAT','SUN') THEN 1 ELSE 0 END as holiday
+    CASE WHEN upper(dayname(date)) in ('SAT','SUN') THEN TRY_TO_BOOLEAN(TRUE) ELSE TRY_TO_BOOLEAN(FALSE) END as is_holiday
 from raw_dates
