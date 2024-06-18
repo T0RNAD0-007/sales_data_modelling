@@ -6,7 +6,7 @@
 }}
 
 with raw_sales as (
-    select * from {{ source('DEV_RAW', 'sales')}}
+    select * from {{ source('RAW','raw_sales')}}
 )
 SELECT
     index,
@@ -16,6 +16,7 @@ SELECT
     fulfilment,
     sales_channel,
     ship_service_level,
+    style,
     sku,
     category,
     size,

@@ -5,13 +5,13 @@
 }}
 
 with sales as (
-    select sales_transaction_id, location_id, product_id, sales_quantity from {{ source('DEV_FACT', 'fact_sales')}}
+    select sales_transaction_id, location_id, product_id, sales_quantity from {{ ref('fact_sales')}}
 ),
 location as (
-    select location_id, state, city from {{ source('DEV_DIM', 'dim_locations')}}
+    select location_id, state, city from {{ ref('dim_locations')}}
 ),
 product as (
-    select product_id, product_style, product_category from {{ source('DEV_DIM', 'dim_products')}}
+    select product_id, product_style, product_category from {{ ref('dim_products')}}
 )
 select
     sa.sales_transaction_id,

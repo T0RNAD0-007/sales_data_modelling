@@ -5,10 +5,10 @@
 }}
 
 with sales as (
-    select sales_quantity, sales_transaction_id,sales_amount, location_id from {{ source('DEV_FACT', 'fact_sales')}}
+    select sales_quantity, sales_transaction_id,sales_amount, location_id from {{ ref('fact_sales')}}
 ),
 location as (
-    select location_id, state from {{ source('DEV_DIM', 'dim_locations')}}
+    select location_id, state from {{ ref('dim_locations')}}
 )
 select
     ls.state as sales_state,

@@ -34,8 +34,6 @@ models:
   dbt_project:
     # Config indicated by + and applies to all files under models/example/
     +materialized: view
-    +post-hook:
-      - "GRANT SELECT ON {{ this }} TO ROLE REPORTER"
     src:
       +materialized: view
       +schema: RAW
@@ -48,10 +46,17 @@ models:
       +materialized: table
       +schema: DIM
       +database: AMAZON
+    dim_intrim:
+      +materialized: table
+      +schema: DIM_INTRIM
+      +database: AMAZON
     fact:
       +materialized: table
       +schema: FACT
       +database: AMAZON
+    mart:
+      +post-hook:
+        - "GRANT SELECT ON {{ this }} TO ROLE REPORTER"
 
 seeds:
   dbt_project:

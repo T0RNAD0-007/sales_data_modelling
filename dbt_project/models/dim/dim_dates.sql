@@ -5,7 +5,7 @@
 }}
 
 with raw_dates as (
-    select distinct date from {{ source('DEV_STAGE', 'cleansed_sales')}}
+    select distinct date from {{ ref('cleansed_sales')}}
 )
 SELECT
     row_number() over (order by date) as date_id,

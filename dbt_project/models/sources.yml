@@ -1,51 +1,11 @@
 version: 2
 
 sources:
-  - name: DEV_RAW
+
+  - name: RAW
     tables:
-      - name: sales
-        identifiers: sales
-
-  - name: DEV_STAGE
-    tables:
-      - name: cleansed_sales
-        identifiers: cleansed_sales
-
-  - name: DEV_DIM
-    tables:
-      - name: dim_currency
-        identifier: dim_currency
-
-      - name: dim_dates
-        identifier: dim_dates
-
-      - name: dim_locations
-        identifier: dim_locations
-
-      - name: dim_orders
-        identifier: dim_orders
-
-      - name: dim_products
-        identifier: dim_products
-
-      - name: dim_shipments
-        identifier: dim_shipments
-
-      - name: dim_coupons
-        identifier: dim_coupons
-
-      - name: dim_city_optimizer
-        identifier: dim_city_optimizer
-
-  - name: DEV_FACT
-    tables:
-      - name: fact_sales
-        identifier: fact_sales
-
-  - name: DEV_MART
-    tables:
-      - name: sales_per_state
-        identifier: sales_per_state
+      - name: raw_sales
+        identifiers: raw_sales
 
   - name: DEV_STATIC
     tables:
